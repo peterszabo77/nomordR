@@ -32,10 +32,13 @@ get_statistics_for_randomized = function(seq, statfunc, n)
 #'
 #' @param statfunc The used statistic function
 #'
-#' @return Vector of integers
+#' @return p probability value
 #'
 #' @export
 #'
+#' @examples
+#' test_association(c(2,3,1,2,2,3,3,2), 'A')
+#' test_association('AABACCB', 'B')
 test_association = function(seq, statfunc)
 {
  N_samples = 10000
