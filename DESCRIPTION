@@ -1,12 +1,11 @@
 Package: nomordR
-Title: What the Package Does (One Line, Title Case)
+Title: Randomization Test for Nominal Value Sequences
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com")
-Description: What the package does (one paragraph).
-License: What license it uses
+Authors@R: c(
+    person(given = "András", family = "Szilágyi", role = c("aut", "cre"), email = "first.last@example.com"),
+    person(given = "Péter", family = "Szabó", role = "aut", email = "first.last@example.com"),
+    person(given = "János", family = "Podani", role = "aut", email = "first.last@example.com"))
+Description: Provides the nomord_probe function to ... statistical test for ordered nominal values.
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
