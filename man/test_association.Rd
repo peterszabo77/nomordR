@@ -19,5 +19,5 @@ Returns the probability p
 }
 \examples{
 test_association(c(2,3,1,2,2,3,3,2), 'A')
-test_association('AABACCB'10, 'B')
+
 }

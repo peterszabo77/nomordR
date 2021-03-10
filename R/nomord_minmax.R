@@ -34,6 +34,8 @@ get_min_stat = function(seq, statfunc)
 #' An internal function that returns the approximate maximum value of a given statistic 
 #' for randomized samples of the input vector of categorical variables.
 #' It uses the Metropolis–Hastings algorithm for the approximation.
+#'
+#' @import stats
 #' 
 #' @keywords internal
 #'
@@ -48,7 +50,6 @@ get_min_stat = function(seq, statfunc)
 get_max_stat = function(seq, statfunc, n)
 {
 	temperature = 0.5
-	set.seed(423)
 	
 	result = statfunc(seq)
 	for(i in c(1:n))
