@@ -23,6 +23,7 @@ get_statistics_for_randomized = function(seq, statfunc, n)
 	return(result)
 }
 
+setClass("nomord", slots=list(name="numeric", input="vector"))
 
 #' test_association
 #'
@@ -49,7 +50,6 @@ test_association = function(seq, statfunc)
   print('invalid method')
   return(-1)
  }
- set.seed(423)
  N_samples = 10000
  sample_value = statfunc(seq)
  randomized_values = get_statistics_for_randomized(seq, statfunc, N_samples)
