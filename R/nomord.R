@@ -23,7 +23,21 @@ get_statistics_for_randomized = function(seq, statfunc, n)
 	return(result)
 }
 
-setClass("nomord", slots=list(name="numeric", input="vector"))
+#' An S4 class to represent numord test result
+#'
+#' @slot input The vectorized input sequence
+#' @slot p p-value of the statistic test
+setClass("nomord", slots=list(input="vector", p="numeric"))
+
+setMethod("show","nomord",
+	function(object)
+	{
+		cat('ahoj')
+# cat(object@name, "\n")
+# cat(object@age, "years old\n")
+# cat("GPA:", object@GPA, "\n")
+	}
+)
 
 #' test_association
 #'
