@@ -27,15 +27,18 @@ get_statistics_for_randomized = function(seq, statfunc, n)
 #'
 #' @slot input The vectorized input sequence
 #' @slot p p-value of the statistic test
+#'
 setClass("nomord", slots=list(input="vector", p="numeric"))
 
-setMethod("show","nomord",
+#' nomord class generics method
+#' @param object An object
+methods::setMethod("show","nomord",
 	function(object)
 	{
-		cat('ahoj')
-# cat(object@name, "\n")
-# cat(object@age, "years old\n")
-# cat("GPA:", object@GPA, "\n")
+	cat('ahoj')
+## cat(object@name, "\n")
+## cat(object@age, "years old\n")
+## cat("GPA:", object@GPA, "\n")
 	}
 )
 

@@ -6,6 +6,7 @@ Authors@R: c(
     person(given = "Péter", family = "Szabó", role = "aut"),
     person(given = "János", family = "Podani", role = "aut"))
 Description: Provides the nomord_probe function to ... statistical test for ordered nominal values.
+Imports: methods
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
