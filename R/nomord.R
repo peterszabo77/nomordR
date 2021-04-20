@@ -57,11 +57,10 @@ methods::setMethod("show","nomord",
 #' @examples
 #' test_association(c(2,3,1,2,2,3,3,2), 'A')
 #'
-test_association = function(seq, statfunc)
+test_association = function(seq, statname="U")
 {
- if (statfunc=='A') {statfunc = get_sum_of_rank_differences}
- else if (statfunc=='B') {statfunc = get_qualitative_spoiledness}
- else if (statfunc=='C') {statfunc = get_quantitative_spoiledness}
+ if (statname=="U") {statfunc = get_U}
+ else if (statname=="T") {statfunc = get_T}
  else
  {
   print('invalid method')
