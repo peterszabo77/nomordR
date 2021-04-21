@@ -2,3 +2,4 @@
 
 export(test_association)
 import(stats)
+importFrom(methods,new)

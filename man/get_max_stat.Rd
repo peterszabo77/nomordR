@@ -4,21 +4,21 @@
 \alias{get_max_stat}
 \title{get_max_stat}
 \usage{
-get_max_stat(seq, statfunc, n)
+get_max_stat(seq, statname, n = -1)
 }
 \arguments{
-\item{seq}{A vector of categorical variables}
-
-\item{statfunc}{The used statistic function}
+\item{seq}{A vector of categorical values}
 
 \item{n}{The number of randomized samples}
+
+\item{statfunc}{The used statistic function}
 }
 \value{
 Integer
 }
 \description{
 An internal function that returns the approximate maximum value of a given statistic 
-for randomized samples of the input vector of categorical variables.
-It uses the Metropolis–Hastings algorithm for the approximation.
+for randomized samples of an input vector of categorical variables
+using either a heuristical rule or the Metropolis–Hastings algorithm.
 }
 \keyword{internal}

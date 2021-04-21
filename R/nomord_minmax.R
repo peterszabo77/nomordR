@@ -70,7 +70,7 @@ get_min_stat = function(seq, statname)
 #'
 get_max_stat = function(seq, statname, n=-1)
 {
-	if(n<=0)
+	if(statname=="U" | n<=0)
 	{
 		if(statname=="U")
 		{
@@ -212,7 +212,7 @@ get_max_stat_heur_T = function(seq)
 #'
 #' @param seq A vector of categorical values
 #'
-#' @param statfunc The used statistic function
+#' @param statname The used statistic function
 #'
 #' @param n The number of randomized samples
 #'
@@ -220,6 +220,15 @@ get_max_stat_heur_T = function(seq)
 #'
 get_max_stat_MH = function(seq, statname, n)
 {
+	if(statname=="U")
+	{
+		statfunc = get_U
+	}
+	else if(statname=="T")
+	{
+		statfunc = get_T
+	}
+
 	temperature = 0.5
 	
 	seq = sample(seq)

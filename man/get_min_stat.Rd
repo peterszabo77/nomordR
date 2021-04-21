@@ -4,18 +4,18 @@
 \alias{get_min_stat}
 \title{get_min_stat}
 \usage{
-get_min_stat(seq, statfunc)
+get_min_stat(seq, statname)
 }
 \arguments{
-\item{seq}{A vector of categorical variables}
+\item{seq}{A vector of categorical values}
 
-\item{statfunc}{The used statistic function}
+\item{statname}{The name of the statistic}
 }
 \value{
 Integer
 }
 \description{
 An internal function that returns the exact minimum value of a given statistic 
-for randomized samples of the input vector of categorical variables
+for randomized samples of an input vector of categorical variables
 }
 \keyword{internal}

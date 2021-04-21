@@ -4,15 +4,15 @@
 \alias{test_association}
 \title{test_association}
 \usage{
-test_association(seq, statfunc)
+test_association(seq, statname = "U")
 }
 \arguments{
 \item{seq}{A vector of categorical variables}
 
-\item{statfunc}{The used statistic function}
+\item{statname}{The used statistic function}
 }
 \value{
-p probability value
+result A nomord class S4 object
 }
 \description{
 Returns the probability p
