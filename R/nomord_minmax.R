@@ -26,7 +26,6 @@ get_min_stat = function(seq, statname)
 		occurrences = sort(occurrences)
 		sorted_values = names(occurrences)
 		
-		print("---")
 		L = length(seq)
 		minseq = rep("*",L)
 		l_c = 0
@@ -54,7 +53,7 @@ get_min_stat = function(seq, statname)
 #'
 #' An internal function that returns the approximate maximum value of a given statistic 
 #' for randomized samples of an input vector of categorical variables
-#' using either a heuristical rule or the Metropolis–Hastings algorithm.
+#' using heuristic rules
 #'
 #' @import stats
 #' 
@@ -62,28 +61,19 @@ get_min_stat = function(seq, statname)
 #'
 #' @param seq A vector of categorical values
 #'
-#' @param statfunc The used statistic function
-#'
-#' @param n The number of randomized samples
+#' @param statfunc The used statistic formula
 #'
 #' @return Integer
 #'
-get_max_stat = function(seq, statname, n=-1)
+get_max_stat = function(seq, statname)
 {
-	if(statname=="U" | n<=0)
+	if(statname=="U")
 	{
-		if(statname=="U")
-		{
-			result = get_max_stat_heur_U(seq)
-		}
-		else if(statname=="T")
-		{
-			result = get_max_stat_heur_T(seq)
-		}
+		result = get_max_stat_heur_U(seq)
 	}
-	else
+	else if (statname=="T")
 	{
-		result = get_max_stat_MH(seq, statname, n)
+		result = get_max_stat_heur_T(seq)
 	}
 	
 	return(result)
@@ -105,7 +95,7 @@ get_max_stat = function(seq, statname, n=-1)
 #'
 get_max_stat_heur_U = function(seq)
 {
-	df = as.data.frame(table(seq))
+	df = as.data.frame(table(seq), stringsAsFactors=FALSE)
 	colnames(df) = c("x", "n")
 	df = df[order(df$n, decreasing=TRUE),]
 	df$priority = c(1:nrow(df))
@@ -149,7 +139,6 @@ get_max_stat_heur_U = function(seq)
 	df_e = df_e[order(df_e$rank,df_e$priority),]
 
 	max_seq = as.vector(df_e$x)
-
 	return(get_U(max_seq))
 }
 
@@ -177,7 +166,7 @@ get_max_stat_heur_T = function(seq)
 	n_values = sort(n_values)
 	k = length(n_values)
 	max_seq = vector(mode="character", length=L)
-	center = floor(L/2)
+	center = ceiling(L/2)
 	for(i in 1:L)
 	{
 		if(((i-1) %% 2) == 0) # odd
@@ -198,62 +187,4 @@ get_max_stat_heur_T = function(seq)
 		max_seq[pos] = ce
 	}
 	return(get_T(max_seq))
-}
-
-#' get_max_stat_MH
-#'
-#' An internal function that returns the approximate maximum value of a given statistic 
-#' for randomized samples of an input vector of categorical variables
-#' using the Metropolis–Hastings algorithm.
-#'
-#' @import stats
-#' 
-#' @keywords internal
-#'
-#' @param seq A vector of categorical values
-#'
-#' @param statname The used statistic function
-#'
-#' @param n The number of randomized samples
-#'
-#' @return Integer
-#'
-get_max_stat_MH = function(seq, statname, n)
-{
-	if(statname=="U")
-	{
-		statfunc = get_U
-	}
-	else if(statname=="T")
-	{
-		statfunc = get_T
-	}
-
-	temperature = 0.5
-	
-	seq = sample(seq)
-	result = statfunc(seq)
-	for(i in c(1:n))
-	{
-		idxs = sample(1:length(seq), 2)
-		seq_alt = seq
-		seq_alt[idxs[1]] = seq[[idxs[2]]]
-		seq_alt[idxs[2]] = seq[[idxs[1]]]
-		stat = statfunc(seq)
-		stat_alt = statfunc(seq_alt)
-		if(stat_alt>stat)
-		{
-			result = stat_alt
-			seq = seq_alt
-		}
-		else
-		{
-			p = exp(-(stat-stat_alt)/temperature)
-			if(runif(1)<p)
-			{
-				seq = seq_alt
-			}
-		}
-	}
-	return(result)
 }

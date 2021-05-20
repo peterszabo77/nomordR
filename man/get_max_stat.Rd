@@ -4,14 +4,12 @@
 \alias{get_max_stat}
 \title{get_max_stat}
 \usage{
-get_max_stat(seq, statname, n = -1)
+get_max_stat(seq, statname)
 }
 \arguments{
 \item{seq}{A vector of categorical values}
 
-\item{n}{The number of randomized samples}
-
-\item{statfunc}{The used statistic function}
+\item{statfunc}{The used statistic formula}
 }
 \value{
 Integer
@@ -19,6 +17,6 @@ Integer
 \description{
 An internal function that returns the approximate maximum value of a given statistic 
 for randomized samples of an input vector of categorical variables
-using either a heuristical rule or the Metropolis–Hastings algorithm.
+using heuristic rules
 }
 \keyword{internal}

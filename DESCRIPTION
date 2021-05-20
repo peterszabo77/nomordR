@@ -1,13 +1,13 @@
 Package: nomordR
-Title: Randomization Test for Nominal Value Sequences
-Version: 0.0.0.9000
+Title: Randomization Test for Sequences of Nominal Values
+Version: 0.1
 Authors@R: c(
-    person(given = "András", family = "Szilágyi", role = c("aut", "cre"), email = "and.szilagyi@gmail.com"),
-    person(given = "Péter", family = "Szabó", role = "aut"),
-    person(given = "János", family = "Podani", role = "aut"))
-Description: Provides the nomord_probe function to ... statistical test for ordered nominal values.
+    person(given = "Peter", family = "Szabo", role = c("aut", "cre"), email = "peterszabomail77@gmail.com"),
+    person(given = "Andras", family = "Szilagyi", role = "aut"),
+    person(given = "Janos", family = "Podani", role = "aut"))
+Description: Implements the nomord_probe() function, which performs a statistical analysis on an input vector (sequence) of nominal (categorical) values.
 Imports: methods
 License: GPL-3
 Encoding: UTF-8
-LazyData: true
+LazyData: false
 RoxygenNote: 7.1.1
